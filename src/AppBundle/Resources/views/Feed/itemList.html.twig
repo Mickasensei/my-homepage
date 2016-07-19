@@ -1,0 +1,10 @@
+<table class="table table-striped feedTab" style="margin-bottom: 0px;">
+    {% for item in component.items %}
+        <tr>
+            <td>{{ item.updated|date('H:i') }}</td>
+            <td>
+                <a href="{{ item.link }}" target="_blank">{{ item.title|truncate(70) }}</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

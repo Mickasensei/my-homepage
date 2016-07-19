@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    {% for component in components %}
+        {% if loop.index0%3 == 0 %}
+            <div class="row"></div>
+        {% endif %}
+        <div class="col-md-4">
+            <div class="panel panel-primary" style="border-color: {{ component.color }};">
+                <div class="panel-heading" style="background-color: {{ component.color }};border-color: {{ component.color }};">
+                    <h3 class="panel-title">
+                        {{ component.title }}
+                        <a href="#" class="{{ 'refresh'~component.getClassName }}" data-component-id="{{ component.id }}">
+                            <i class="fa fa-refresh pull-right" aria-hidden="true"></i>
+                        </a>
+                    </h3>
+                </div>
+                <div class="itemList" {% if component.getClassName == 'Twitter' %}style="max-height: 475px;overflow-y: scroll;"{% endif %}>
+                    <i class="fa fa-refresh fa-spin fa-3x itemListSpinner"></i>
+                    {% include 'AppBundle:'~component.getClassName~':itemList.html.twig' %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,33 @@
+<div class="row">
+    {% for key, item in component.items %}
+        <div class="{{ 'col-md-'~(3/((component.items|length)/4)) }}" {% if key != 0 %}
+        style="{{ 'text-align: center;border-left: 1px solid '~component.color }}"
+            {% else %}style="text-align: center;"{% endif %}>
+            {{ item.city }}
+            <br>
+            <i class="wi {{ item.current.weather }}" style="font-size: 25px;margin: 5px 0 5px 0;"></i>
+            <br>
+            {{ item.current.temperature|raw }}
+            <table class="tabForecast">
+                {% for key, forecast in item.forecasts %}
+                    <tr>
+                        <td rowspan="2">
+                            {{ key }}
+                        </td>
+                        <td rowspan="2">
+                            <i class="wi {{ forecast.weather }}" style="font-size: 25px;"></i>
+                        </td>
+                        <td>
+                            {{ forecast.temperature.min|raw }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ forecast.temperature.max|raw }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endfor %}
+</div>

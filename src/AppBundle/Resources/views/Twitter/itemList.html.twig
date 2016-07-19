@@ -1,0 +1,13 @@
+<table class="table tweetTab" style="margin-bottom: 0px;">
+    {% for item in component.items %}
+        <tr>
+            <td rowspan="2" style="vertical-align: middle;"><img src="{{ item.profileImg }}"></td>
+            <td style="padding-left: 5px;!important;">
+                <a href="{{ 'https://twitter.com/'~item.screenName }}" target="_blank">{{ item.username }}</a> {{ '@'~item.screenName }} - {{ item.delay }}
+            </td>
+        </tr>
+        <tr style="{{ 'border-bottom: 1px solid '~component.color }}">
+            <td style="padding-left: 5px;!important;">{{ item.tweet }}</td>
+        </tr>
+    {% endfor %}
+</table>
